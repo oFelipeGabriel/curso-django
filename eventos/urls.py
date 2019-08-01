@@ -18,10 +18,14 @@ from django.urls import path
 from inscricao.views import agora_view
 from inscricao.views import cursos_list
 from inscricao.views import AgoraView
+from inscricao.views import CursoListView
+from inscricao.views import CursoDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('agora/', agora_view),
     path('cursos/', cursos_list),
-    path('agora_now/', AgoraView.as_view(), name="agora_now")
+    path('agora_now/', AgoraView.as_view(), name="agora_now"),
+    path('cursos_list', CursoListView.as_view(), name="cursos_list"),
+    path('curso_detail/<int:pk>', CursoDetailView.as_view(), name='curso_detail'),
 ]

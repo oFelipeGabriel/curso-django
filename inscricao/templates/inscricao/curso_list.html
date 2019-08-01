@@ -1,0 +1,9 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<ul>
+{% for obj in object_list %}
+    <li><span><a href="{% url 'curso_detail' obj.pk %}">Curso: {{obj}}</a></span></li>
+{% endfor %}
+</ul>
+{% endblock content %}

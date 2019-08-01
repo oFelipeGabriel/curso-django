@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView
+from django.views.generic import DetailView
 from django.http import HttpResponse
 from datetime import datetime
 from inscricao.models import Curso
@@ -28,3 +30,11 @@ class AgoraView(View):
         now = datetime.now()
         html = "<html><body>Agora = %s.</body></html>"% now
         return HttpResponse(html)
+
+
+class CursoListView(ListView):
+    model = Curso
+
+
+class CursoDetailView(DetailView):
+    model = Curso
