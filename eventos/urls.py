@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from inscricao.views import agora_view
+from inscricao.views import cursos_list
+from inscricao.views import AgoraView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('agora/', agora_view),
+    path('cursos/', cursos_list),
+    path('agora_now/', AgoraView.as_view(), name="agora_now")
 ]
