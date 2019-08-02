@@ -23,6 +23,12 @@ from inscricao.views import CursoDetailView
 from inscricao.views import CursoForm
 from inscricao.views import CursoCreate2
 from inscricao.views import recebe_form
+from inscricao.views import ParticipanteListView
+from inscricao.views import ParticipanteDetailView
+from inscricao.views import ParticipanteCreateView
+from inscricao.views import MatriculaListView
+from inscricao.views import MatriculaDetailView
+from inscricao.views import MatriculaCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,5 +40,10 @@ urlpatterns = [
     path('cursos_form/', CursoForm.as_view(), name="cursos_form"),
     path('cursos_form2/', CursoCreate2.as_view(), name="cursos_form2"),
     path('recebe_form/', recebe_form, name="cursos_form_recebe"),
-    
+    path('participante_list', ParticipanteListView.as_view(), name="participantes_list"),
+    path('participante_detail/<int:pk>', ParticipanteDetailView.as_view(), name='participante_detail'),
+    path('participante_form/', ParticipanteCreateView.as_view(), name="participante_form"),
+    path('matricula_list', MatriculaListView.as_view(), name="matricula_list"),
+    path('matricula_detail/<int:pk>', MatriculaDetailView.as_view(), name='matricula_detail'),
+    path('matricula_form/', MatriculaCreateView.as_view(), name="matricula_form"),
 ]

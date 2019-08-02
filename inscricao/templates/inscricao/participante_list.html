@@ -12,16 +12,16 @@
     <body>
             {% for curso in object_list %}
             <tr>
-                <td><a href="{% url 'curso_detail' curso.pk %}">{{ curso.nome }}</a></td>
-                <td>{{ curso.professor }}</td>
-                <td>{{ curso.data_inicio }}</td>
-                <td>{{ curso.data_fim }}</td>
+                <td><a href="{% url 'participante_detail' curso.pk %}">{{ curso.nome }}</a></td>
+                <td>{{ curso.email }}</td>
+                <td>{{ curso.telefone }}</td>
+                <td>{{ curso.endereco }}</td>
             </tr>
             {% empty %}
                 <span>Não ha cursos cadastrados</span>
             {% endfor %}
     </body>
 </table>
-<div class="w-100 border"><a class="brn btn-primary float-right mr-5" href="{% url 'cursos_form2' %}">Cadastrar</a></div>
+<div class="w-100 border"><a class="brn btn-primary float-right mr-5" href="{% url 'participante_form' %}">Cadastrar</a></div>
 {% endblock content %}
 

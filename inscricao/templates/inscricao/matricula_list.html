@@ -1,0 +1,25 @@
+{% extends 'inscricao/base.html' %}
+{% block content %}
+<table class="table">
+    <head>
+        <tr>
+            <th>Data</th>
+            <th>Participante</th>
+            <th>Curso</th>
+        </tr>
+    </head>
+    <body>
+            {% for matricula in object_list %}
+            <tr>
+                <td><a href="{% url 'matricula_detail' matricula.pk %}">{{ matricula.data }}</a></td>
+                <td>{{ matricula.aluno.nome }}</td>
+                <td>{{ matricula.curso.nome }}</td>
+            </tr>
+            {% empty %}
+                <span>Não ha cursos cadastrados</span>
+            {% endfor %}
+    </body>
+</table>
+<div class="w-100 border"><a class="brn btn-primary float-right mr-5" href="{% url 'matricula_form' %}">Cadastrar</a></div>
+{% endblock content %}
+

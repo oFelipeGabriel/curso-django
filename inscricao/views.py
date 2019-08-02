@@ -10,6 +10,8 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from datetime import datetime
 from inscricao.models import Curso
+from inscricao.models import Participante
+from inscricao.models import Matricula
 from django import forms
 from django.urls import reverse
 from django.urls import reverse_lazy
@@ -65,15 +67,40 @@ class CursoCreate2(CreateView):
     model = Curso
     template_name = 'inscricao/curso_form.html'
     success_url = reverse_lazy('cursos_list')
-    obj = None
     fields = '__all__'    
 
     #def form_invalid(self, form):
     #    return HttpResponse(" form is invalid.. this is just an HttpResponse object")
 
-def recebe_form(request):
-    
+def recebe_form(request):    
     print(request.POST['nome'])
     request_context = RequestContext(request)
     print(request_context)
     return CursoCreate(request.POST[1:])
+
+class ParticipanteListView(ListView):
+    model = Participante
+
+
+class ParticipanteDetailView(DetailView):
+    model = Participante
+
+class ParticipanteCreateView(CreateView):
+    model = Participante
+    template_name = 'inscricao/participante_form.html'
+    success_url = reverse_lazy('participantes_list')
+    fields = ['nome', 'email', 'telefone', 'endereco']
+
+
+class MatriculaListView(ListView):
+    model = Matricula
+
+
+class MatriculaDetailView(DetailView):
+    model = Matricula
+
+class MatriculaCreateView(CreateView):
+    model = Matricula
+    template_name = 'inscricao/matricula_form.html'
+    success_url = reverse_lazy('matricula_list')
+    fields = '__all__'
