@@ -1,0 +1,13 @@
+{% extends 'inscricao/base.html' %}
+
+{% block content %}
+
+<div class="border w-100">
+    <form action="" method="POST">
+            {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-primary" value="Enviar">
+    </form>
+</div>
+
+{% endblock content %}

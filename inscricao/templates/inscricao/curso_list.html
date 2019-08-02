@@ -1,9 +1,10 @@
 
-{% extends 'base.html' %}
-{% block content %}
+
 <ul>
-{% for obj in object_list %}
-    <li><span><a href="{% url 'curso_detail' obj.pk %}">Curso: {{obj}}</a></span></li>
-{% endfor %}
+    {% for curso in object_list %}
+        <li>{{ curso.nome }} - {{ curso.professor }}</li>
+    {% empty %}
+        <li>No articles yet.</li>
+    {% endfor %}
+
 </ul>
-{% endblock content %}

@@ -20,6 +20,9 @@ from inscricao.views import cursos_list
 from inscricao.views import AgoraView
 from inscricao.views import CursoListView
 from inscricao.views import CursoDetailView
+from inscricao.views import CursoForm
+from inscricao.views import CursoCreate2
+from inscricao.views import recebe_form
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +31,8 @@ urlpatterns = [
     path('agora_now/', AgoraView.as_view(), name="agora_now"),
     path('cursos_list', CursoListView.as_view(), name="cursos_list"),
     path('curso_detail/<int:pk>', CursoDetailView.as_view(), name='curso_detail'),
+    path('cursos_form/', CursoForm.as_view(), name="cursos_form"),
+    path('cursos_form2/', CursoCreate2.as_view(), name="cursos_form2"),
+    path('recebe_form/', recebe_form, name="cursos_form_recebe"),
+    
 ]

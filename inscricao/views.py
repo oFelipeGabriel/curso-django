@@ -1,10 +1,18 @@
 from django.shortcuts import render
 from django.views import View
+from django.views.generic.edit import BaseCreateView
 from django.views.generic import ListView
 from django.views.generic import DetailView
+from django.views.generic import TemplateView
+from django.views.generic import CreateView
+from django.views.generic import FormView
 from django.http import HttpResponse
+from django.template import RequestContext
 from datetime import datetime
 from inscricao.models import Curso
+from django import forms
+from django.urls import reverse
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -38,3 +46,34 @@ class CursoListView(ListView):
 
 class CursoDetailView(DetailView):
     model = Curso
+
+class CursoForm(FormView):
+    model = Curso
+    template_name = "inscricao/curso_form.html"
+    def is_valid(self):
+        print('validado')
+
+class CursoCreate(CreateView):
+    model = Curso
+    template_name = "inscricao/curso_form.html"
+
+    def __init__(self, fields):
+        self. fields = fields
+
+class CursoCreate2(CreateView):
+    #form_class = CursoForm
+    model = Curso
+    template_name = 'inscricao/curso_form.html'
+    success_url = reverse_lazy('cursos_list')
+    obj = None
+    fields = '__all__'    
+
+    #def form_invalid(self, form):
+    #    return HttpResponse(" form is invalid.. this is just an HttpResponse object")
+
+def recebe_form(request):
+    
+    print(request.POST['nome'])
+    request_context = RequestContext(request)
+    print(request_context)
+    return CursoCreate(request.POST[1:])
