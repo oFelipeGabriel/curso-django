@@ -1,1 +1,1 @@
-web: gunicorn eventos.wsgi
+web: gunicorn eventos:app
